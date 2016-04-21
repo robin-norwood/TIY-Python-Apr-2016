@@ -22,9 +22,11 @@ def add_together(numbers):
 #total = add_together(["one", "two", "three"])
 #print("Tot:", total)
 
-def greetUs(names):
+def greetUs(*names):
     for name in names:
         print("Hello, " + name + "!")
+
+greetUs('Joe', 'billy')
 
 def input_loop(prompt="Enter data: "):
     # Looks at the *arguments* to function

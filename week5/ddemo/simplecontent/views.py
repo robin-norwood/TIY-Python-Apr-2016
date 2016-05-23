@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseNotFound, HttpResponsePermanentRedirect, HttpResponseRedirect, JsonResponse, FileResponse
+from django.template.response import TemplateResponse
 from django.template import loader
 from .models import Article, SuperHero
 
@@ -49,7 +50,7 @@ def view_article(request, article_id):
         raise Http404("No such article!")
     context = { 'article': article }
 
-    return render(request, 'simplecontent/article_details.html', context)
+    return TemplateResponse(request, 'simplecontent/article_details.html', context)
 
 def cover_photo(request, article_id, image_type="jpg"):
     # article_id = "12"

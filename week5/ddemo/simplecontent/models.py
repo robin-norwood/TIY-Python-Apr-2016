@@ -1,8 +1,22 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 # art = Article(category=5)
 # art.category # int(5)
+
+class CategoryArticleQuerySet(models.QuerySet):
+    def lifestyle(self):
+        return self.filter(category='LIFESTYLE')
+
+class PublishedArticleManager(models.Manager):
+    def get_queryset(self):
+        return super(PublishedArticleManager, self).get_queryset().filter(is_published=True)
+
+class UnpublishedArticleManager(models.Manager):
+    def get_queryset(self):
+        return super(UnpublishedArticleManager, self).get_queryset().filter(is_published=False)
 
 class Article(models.Model):
     ARTICLE_CATS = (
@@ -25,11 +39,21 @@ class Article(models.Model):
     authors = models.ManyToManyField(User)
     cover_photo = models.OneToOneField('Photo', null=True, related_name='cover_photo')
     photos = models.ManyToManyField('Photo')
+    is_published = models.BooleanField(null=False, default=False, db_index=True)
 
 #    powers = models.ManyToManyField('Power')
-    publish_date = models.DateTimeField(auto_now_add=True, db_index=True)
+    publish_date = models.DateField(auto_now_add=True, db_index=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+
+    objects = PublishedArticleManager()
+    unpublished = UnpublishedArticleManager()
+    by_category = CategoryArticleQuerySet.as_manager()
+
+    @property
+    def age(self):
+        """Return a relativedelta object representing time since publication."""
+        return relativedelta(date.today(), self.publish_date)
 
     def __str__(self):
         return str(self.id) + ": " + self.title

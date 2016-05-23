@@ -18,7 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^articles/', include('simplecontent.urls')),
-    url(r'^heroes/$', 'simplecontent.views.heroes_list'),
-    url(r'^heroes/(\d+)$', 'simplecontent.views.hero_details'),
     url(r'^admin/', admin.site.urls),
 ]

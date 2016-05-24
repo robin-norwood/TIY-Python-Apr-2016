@@ -1,10 +1,13 @@
 from django.conf.urls import url
 from . import views
 
+app_name = 'articles'
 urlpatterns = [
-    url(r'^$', views.index, name="content-index"),
-    url(r'^([0-9]+)/?$', views.view_article, name="simplecontent-view_article"),
-    url(r'^(?P<article_id>[0-9]+)/cover_photo\.?(?P<image_type>png|jpg|bmp)?$', views.cover_photo),
+    url(r'^$', views.index, name="index"),
+    url(r'^(?P<article_id>[0-9]+)/?$', views.view_article, name="view"),
+    url(r'^(?P<article_id>[0-9]+)/cover_photo\.?(?P<image_type>png|jpg|bmp)?$',
+        views.cover_photo,
+        name="cover_photo"),
     url(r'^responsedemo$', views.myview),
     url(r'^myfile$', views.text_file_view),
     url(r'^search$', views.search_view),

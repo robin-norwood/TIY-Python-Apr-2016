@@ -1,6 +1,16 @@
+{% extends 'simplecontent/base.html' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block content %}
+
 <article>
 <h1>{{ article.title }}</h1>
 
 <p>{{ article.article_text | safe}}</p>
 
 </article>
+
+<p><a href="{% url 'articles:index' %}">back to list</a></p>
+
+{% endblock %}

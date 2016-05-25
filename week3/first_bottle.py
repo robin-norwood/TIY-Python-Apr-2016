@@ -1,6 +1,8 @@
 from bottle import route, run, template, request, response
 import json
 
+from access_data import get_by_min_height
+
 @route('/')
 @route('/hello')
 @route('/hello/<name>')
@@ -27,5 +29,9 @@ def get_forecast():
     return template('<div>Lat: {{lat}}, lon: {{lon}}',
                     lat=lat, lon=lon)
 
+@route('/waves')
+def get_waves():
+    min_height = float(request.query.min_height)
+    return json.dumps(get_by_min_height(min_height))
 
 run(host='localhost', port=8080)

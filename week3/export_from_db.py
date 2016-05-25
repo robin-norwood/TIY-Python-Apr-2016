@@ -1,4 +1,5 @@
 import psycopg2
+import json
 
 wavedata = []
 
@@ -17,8 +18,11 @@ SELECT height_meters,
 
 data = cur.fetchall()
 
-for row in data:
-    print("Height in meters: " + str(float(row[0])))
+#print(data[0])
+row = [float(x) for x in data[0][0:4]]
+row.append(str(data[0][-1]))
+print(row)
+print(json.dumps(row))
 
 conn.commit()
 cur.close()

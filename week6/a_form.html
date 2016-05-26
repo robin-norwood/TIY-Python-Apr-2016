@@ -1,0 +1,73 @@
+<form method="get">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" />
+    </div>
+    <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" name="email" id="mail" />
+    </div>
+    <div>
+        <label for="msg">Message:</label>
+        <textarea name="msg" id="msg"></textarea>
+    </div>
+    <div>
+      <label for="fruit">Fruit:</label>
+  <select name="fruit" id="fruit" multiple>
+    <option value="banana">Banana</option>
+    <option value="cherry">Cherry</option>
+    <option value="lemon">Lemon</option>
+  </select>
+
+    </div>
+
+    <label for="myFruit">What's your favorite fruit?</label>
+    <input type="text" id="myFruit" list="mySuggestion" />
+    <datalist id="mySuggestion">
+      <option>Apple</option>
+      <option>Banana</option>
+      <option>Blackberry</option>
+      <option>Blueberry</option>
+      <option>Lemon</option>
+      <option>Lychee</option>
+      <option>Peach</option>
+      <option>Pear</option>
+    </datalist>
+
+    <div>
+    <label for="cb">CHeck this out</label>
+    <input type="checkbox" id="cb" />
+  </div>
+
+  <div>
+  <fieldset>
+  <legend>What gender are you?</legend>
+  <p><label for="g1"><input type="radio" name="g" id="g1" value="M"> Male</label></p>
+  <p><label for="g2"><input type="radio" name="g" id="g2" value="F"> Female</label></p>
+  <p><label for="g3"><input type="radio" name="g" id="g3" value="B"> Both</label></p>
+  <p><label for="g4"><input type="radio" name="g" id="g4" value="N"> None</label></p>
+  <p><label for="g5"><input type="radio" name="g" id="g5" value="!"> This is not your concern!</label></p>
+  <p><label for="g6"><input type="radio" name="g" id="g6" value="?"> Who cares?</label></p>
+  <p><label for="g7"><input type="radio" name="g" id="g7" value="\o/"> Obi-Wan Kenobi</label></p>
+</fieldset>
+  </div>
+
+  <div>
+    <label for="myrange">How much do you like popcorn:</label>
+      <input type="range" min="1" max="5" step="1" id="myrange"/>
+    </div>
+
+<div>
+  <label for="colorpicker">fave color:</label>
+
+    <input name="colorpicker" id="colorpicker" type="color">
+</div>
+    <div>
+      <input type="submit" name="done" value="done"/>
+    </div>
+    <div>
+      <button type="reset">
+    This a <br><strong>reset button</strong>
+</button>
+    </div>
+</form>

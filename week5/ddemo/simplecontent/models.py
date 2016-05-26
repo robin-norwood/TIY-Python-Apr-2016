@@ -96,6 +96,11 @@ class Comment(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    @property
+    def age(self):
+        """Return a relativedelta object representing time since publication."""
+        return relativedelta(date.today(), self.created)
+
     def __str__(self):
         return str(self.id)
 

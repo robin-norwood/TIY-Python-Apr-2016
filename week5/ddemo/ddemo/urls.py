@@ -18,6 +18,7 @@ from django.contrib import admin
 from . import views
 
 urlpatterns = [
+    url(r'^', include('django.contrib.auth.urls')),
     url(r'^$', views.index, name="index"),
     url(r'^articles/', include('simplecontent.urls')),
     url(r'^admin/', admin.site.urls),

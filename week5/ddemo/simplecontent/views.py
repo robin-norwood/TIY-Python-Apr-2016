@@ -3,6 +3,8 @@ from django.http import HttpResponse, Http404, HttpResponseNotFound, HttpRespons
 from django.template.response import TemplateResponse
 from django.template import loader
 from .models import Article, SuperHero
+from django.contrib.auth.decorators import login_required
+from .utils import pretty_age
 
 def gimme_image(request):
     response = FileResponse(open('example.png', 'rb'), content_type='image/png')
@@ -33,6 +35,7 @@ def text_file_view(request):
 
     return response
 
+@login_required
 def index(request): # HttpRequest
     recent_articles = Article.objects.order_by('-publish_date')[:5]
 #    templ = loader.get_template('simplecontent/articles_index.html')
@@ -48,7 +51,8 @@ def view_article(request, article_id):
         article = Article.objects.get(id=article_id)
     except Article.DoesNotExist:
         raise Http404("No such article!")
-    context = { 'article': article }
+    context = { 'article': article,
+                'pretty_age': pretty_age(article.age)}
 
     return TemplateResponse(request, 'simplecontent/article_details.html', context)
 

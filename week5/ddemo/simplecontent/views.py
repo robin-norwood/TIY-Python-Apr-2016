@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404, HttpResponseNotFound, HttpResponsePermanentRedirect, HttpResponseRedirect, JsonResponse, FileResponse
 from django.template.response import TemplateResponse
 from django.template import loader
+from django.core.exceptions import PermissionDenied
 from .models import Article, SuperHero
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from .utils import pretty_age
 
 def gimme_image(request):
@@ -44,6 +45,9 @@ def index(request): # HttpRequest
 
     return render(request, 'simplecontent/articles_index.html', context)
 
+
+
+@permission_required('simplecontent.moderate_comment')
 def view_article(request, article_id):
 
     try:
@@ -84,3 +88,14 @@ def hero_details(request, hero_id):
     context = { 'hero': hero }
 
     return render(request, 'simplecontent/hero.html', context)
+
+@permission_required('simplecontent.moderate_comment')
+def moderate_comment(request, comment_id):
+    comment = Comment.objects.get(id=comment_id)
+
+    if request.method == 'POST':
+        pass
+        # Do stuff
+    else:
+        pass
+        # show form

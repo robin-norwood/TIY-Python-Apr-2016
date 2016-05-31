@@ -50,6 +50,7 @@ class Article(models.Model):
     unpublished = UnpublishedArticleManager()
     by_category = CategoryArticleQuerySet.as_manager()
 
+
     @property
     def age(self):
         """Return a relativedelta object representing time since publication."""
@@ -103,6 +104,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.id)
+
+    class Meta:
+        permissions = (
+            ("moderate_comment", "Can the user moderate comments?"),
+            ("view_unmoderated_comment", "Can the user view unmoderated comments?")
+        )
 
 
 class Photo(models.Model):

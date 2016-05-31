@@ -12,6 +12,8 @@
 
 </article>
 
-<p><a href="{% url 'articles:index' %}">back to list</a></p>
+{% if 'simplecontent.change_article' in perms %}
+  <p><a href="{% url 'articles:index' %}">back to list</a></p>
+{% endif %}
 
 {% endblock %}

@@ -12,7 +12,8 @@ urlpatterns = [
     url(r'^myfile$', views.text_file_view),
     url(r'^search$', views.search_view),
     url(r'^news$', views.maint_view),
-    url(r'^example\.png$', views.gimme_image)
+    url(r'^example\.png$', views.gimme_image),
+    url(r'^(?P<comment_id>[0-9]+)/moderate$', views.moderate_comment)
 ]
 
 # IN MY HTMLS:

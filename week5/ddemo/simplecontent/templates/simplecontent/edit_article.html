@@ -1,0 +1,11 @@
+{% extends 'simplecontent/base.html' %}
+
+{% block title %}Edit {{article.id}}{% endblock %}
+
+{% block content %}
+<form action="{% url 'articles:edit' article_id=article.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form>
+{% endblock %}

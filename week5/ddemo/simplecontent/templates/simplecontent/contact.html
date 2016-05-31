@@ -1,0 +1,14 @@
+{% extends 'simplecontent/base.html' %}
+
+{% block title %}Contact Us!{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'articles:contact_form' %}" method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Submit" />
+
+</form>
+
+{% endblock %}

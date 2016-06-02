@@ -3,7 +3,8 @@ from .settings import *
 import dj_database_url
 
 DEBUG = False
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0', 'cryptic-temple-77251.herokuapp.com']
+# BAD WAY: ALLOWED_HOSTS = ['*']
 
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 

@@ -15,6 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework import routers
+from simplecontent.api import UserViewSet, ArticleViewSet
+
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'articles', ArticleViewSet)
+
 from . import views
 
 urlpatterns = [
@@ -22,4 +29,6 @@ urlpatterns = [
     url(r'^$', views.index, name="index"),
     url(r'^articles/', include('simplecontent.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

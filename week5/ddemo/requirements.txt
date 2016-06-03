@@ -2,11 +2,17 @@ dj-database-url==0.4.1
 dj-static==0.0.6
 Django==1.9.6
 django-bootstrap3==7.0.1
+django-cors-headers==1.1.0
+django-filter==0.13.0
+django-rest-swagger==0.3.7
+djangorestframework==3.3.3
 foreman==0.9.7
 gunicorn==19.6.0
+Markdown==2.6.6
 Pillow==3.2.0
 psycopg2==2.6.1
 python-dateutil==2.5.3
+PyYAML==3.11
 requests==2.10.0
 requests-futures==0.9.7
 six==1.10.0

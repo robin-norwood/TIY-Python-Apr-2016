@@ -5,6 +5,7 @@ from django.template import loader
 from django.core.exceptions import PermissionDenied
 from .models import Article, SuperHero
 from django.contrib.auth.decorators import login_required, permission_required
+from django.views.decorators.csrf import csrf_protect
 from .utils import pretty_age
 
 def gimme_image(request):
@@ -13,6 +14,7 @@ def gimme_image(request):
 
     return response
 
+@csrf_protect
 def gimme_jason(request):
     return JsonResponse({"key": "value"})
 
@@ -59,6 +61,10 @@ def view_article(request, article_id):
                 'pretty_age': pretty_age(article.age)}
 
     return TemplateResponse(request, 'simplecontent/article_details.html', context)
+
+@csrf_protect
+def my_first_api_view(request):
+    pass # do stuff Here
 
 def cover_photo(request, article_id, image_type="jpg"):
     # article_id = "12"

@@ -1,0 +1,20 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My video library</title>
+  </head>
+  <body>
+    <h1>Video library</h1>
+
+    <video src="http://7283092055e994cfc9bd-4a43f6c566f88b53ca5020504beae1ee.r42.cf2.rackcdn.com/movie.mp4" width="320" height="240" controls></video>
+<br/>
+    <video src="{% static 'video_library/movie.mp4' %}" width="320" height="240" controls></video>
+<br/>
+    <iframe width="210" height="157" src="https://www.youtube.com/embed/jBVZRkbM6ds" frameborder="0" allowfullscreen></iframe>
+<br/>
+
+  </body>
+</html>
